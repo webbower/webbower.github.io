@@ -1,10 +1,10 @@
 name: Webbower
-tagline: Where healthy DOM trees are cultivated by Matt Bower
+tagline: Where Matt Bower cultivates healthy DOM trees
 markdown: redcarpet
 pygments: true
 permalink: /blog/:title
 exclude: [Gemfile, Gemfile.lock]
-safe: true
+# safe: true
 lsi: false
 
 # Google Analytics

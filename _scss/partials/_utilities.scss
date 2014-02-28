@@ -1,0 +1,12 @@
+.inline-list {
+	&,
+	li {
+		margin: 0;
+		padding: 0;
+	}
+	
+	li,
+	a {
+		display: inline-block;
+	}
+}

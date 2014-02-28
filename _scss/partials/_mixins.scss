@@ -1,0 +1,43 @@
+// Mixins
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@mixin edge-padding($h, $v: false) {
+	@if $v {
+		padding: $v $h;
+	}
+	@else {
+		padding: $h;
+	}
+}
+
+@mixin reset-mp {
+	margin: 0;
+	padding: 0;
+}
+
+@mixin inline-list {
+	&,
+	li {
+		@include reset-mp;
+	}
+	
+	li,
+	a {
+		display: inline-block;
+	}
+}
+
+@mixin font-size($size) {
+	$raw-value: strip-unit($size);
+	$raw-base-value: strip-unit($base-font-size);
+	font-size: $raw-value + px;
+	font-size: ($raw-value / $raw-base-value) + rem;
+}
+
+// @mixin font-size($sizeValue: 1.6) {
+// 	font-size: ($sizeValue * 10) + px;
+// 	font-size: $sizeValue + rem;
+// }

@@ -1,0 +1,60 @@
+html {
+	font-size: $base-font-size;
+}
+
+body {
+	line-height: 1.5;
+	font-family: Raleway, sans-serif;
+	color: $fg-pri-color;
+}
+
+h1, h2, h3, h4, h5, h6, legend {
+	color: $fg-sec-color;
+}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+h4 {}
+
+h5 {}
+
+h6 {}
+
+p, li {
+//	font-size: strip-unit(18px);
+	@include font-size(14px);
+}
+
+p {}
+
+ul {}
+
+ol {}
+
+li {}
+
+blockquote {
+	border-left: 1px solid $accent-color;
+	color: $fg-pri-color;
+	@include font-size(18px);
+	padding-left: 20px;
+	color: $fg-sec-color;
+	margin: 1em 20px;
+
+	p {
+		font-size: inherit;
+	}
+}
+
+pre {
+	@include font-size(14px);
+	background: rgba(0,0,0,0.05);
+	border: 1px solid rgba(0,0,0,0.2);
+	padding: 10px;
+	white-space: pre;
+	overflow-x: auto;
+}
