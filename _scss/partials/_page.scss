@@ -1,5 +1,25 @@
+html,
+body {
+	min-height: 100%;
+}
+
+html {
+	height: 100%;
+}
+
 body {
 	background: $bg-body;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+[role=banner],
+[role=main],
+[role=contentinfo] {
+	max-width: 800px;
+	margin: 0 auto;
+	width: 100%;
 }
 
 [role=banner] {
@@ -28,6 +48,7 @@ body {
 	p {
 		color: white;
 		margin-top: 0;
+		margin-bottom: 0;
 	}
 }
 
@@ -60,6 +81,7 @@ body {
 
 [role=main] {
 	@include edge-padding(20px, 10px);
+	flex: 1;
 	
 	h1 {
 		&:first-child {
@@ -74,13 +96,5 @@ body {
 	
 	ul {
 		@include inline-list;
-	}
-}
-
-// TODO Move this stuff elsewhere
-
-.blog-entry {
-	.title {
-		font-size: 36px;
 	}
 }

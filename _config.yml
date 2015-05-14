@@ -1,9 +1,9 @@
 name: Webbower
-tagline: Where Matt Bower cultivates healthy DOM trees
+tagline: Where healthy DOM trees are cultivated
 markdown: redcarpet
 pygments: true
 permalink: /blog/:title
-exclude: [Gemfile, Gemfile.lock]
+exclude: [Gemfile, Gemfile.lock, .gitignore, bower.json, README.md]
 # safe: true
 lsi: false
 
@@ -14,3 +14,6 @@ ga-id: UA-18539289-1
 social:
   twitter: webbower
   github: webbower
+
+# Misc
+allcapstag: [php, cms, html, css, js, mysql]

@@ -5,7 +5,7 @@ body:
   class: home
 ---
 <!-- Blog Summaries -->
-<section>
+<section class="feed blog-feed">
 	<header>
 		<h2 class="title">Blog</h2>
 	</header>
@@ -18,30 +18,20 @@ body:
 
 		{{ post.excerpt }}
 
-		<footer>
-			<time itemprop="dateCreated">{{ post.date | date: "%B %-d, %Y" }}</time>
-			<ul class="inline-list comma-list tag-list">
-				{% for cat in post.categories %}
-					<li><a href="/tags/{{ cat }}">{{ cat | capitalize }}</a></li>
-				{% endfor %}
-				<!-- <li><a href="#">SilverStripe</a></li>
-				<li><a href="#">PHP</a></li>
-				<li><a href="#">Design Patterns</a></li> -->
-			</ul>
-			<p><a href="{{ post.url }}">Permalink</a></p>
-		</footer>
+		{% include post-meta.html post=post %}
+
 	</article>
 	{% endfor %}
 </section>
 
 <!-- Project Listings (Lab) -->
-<section>
+<section class="feed lab-feed">
 	<header>
 		<h2 class="title">Lab</h2>
 	</header>
 	
 	{% for project in site.data.lab %}
-	<article>
+	<article class="entry lab-entry">
 		<header>
 			<h2 class="title"><a href="/lab/{{ project.id }}">{{ project.name }}</a></h2>
 		</header>
@@ -50,9 +40,9 @@ body:
 		
 		<footer>
 			<ul>
-				<li>Current version: {{ project.version }}</li>
-				<li><a href="/lab/{{ project.id }}">Project Page</a></li>
-				<li><a href="http://github.com/{{ site.social.github }}/{{ project.id }}">GitHub Repo</a></li>
+				<li><span class="label visuallyhidden">Current version:</span> {{ project.version }}</li>
+				<li><a href="/lab/{{ project.id }}">Docs</a></li>
+				<li><a href="http://github.com/{{ site.social.github }}/{{ project.id }}">Source</a></li>
 			</ul>
 		</footer>
 	</article>

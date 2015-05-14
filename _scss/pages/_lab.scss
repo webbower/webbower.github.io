@@ -1,0 +1,40 @@
+.lab-feed {
+    text-align: justify;
+    font-size: 0.1px;
+
+    > header {
+        margin-bottom: 18px;
+    }
+
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+.lab-entry {
+    @include font-size-rems(18px);
+    margin-bottom: 1em;
+    @include highlight-box;
+
+    .title {
+        @include font-size-rems(18px);
+        margin-top: 0;
+        margin-bottom: 0.5em;
+    }
+
+    header + p {
+        margin-top: 0;
+    }
+    
+    footer {
+        ul {
+            @include reset-mp;
+        }
+        
+        li {
+            @include meta-list;
+        }
+    }
+}

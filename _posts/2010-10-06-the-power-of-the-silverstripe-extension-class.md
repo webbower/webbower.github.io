@@ -49,28 +49,27 @@ Not happy with a template method on one of the Controller classes in a module? S
 
 Let's say we have a Module_Controller class that came with a module and it has an UploadForm method that outputs a form into our template, but there's something about it we don't like, maybe an extra field we don't want to show.
 
-	class MyControllerExtension extends Extension {
+{% highlight php linenos startinline %}
+class MyControllerExtension extends Extension {
+    public function MyUploadForm() {
+        $form = $this->owner->UploadForm();
+        // Modify the form
+        return $form;
+    }
+}
 
-	    public function MyUploadForm() {
-
-	        $form = $this->owner->UploadForm();
-
-	        // Modify the form
-
-	        return $form;
-	    }
-
-	}
-
-	Object::add_extension('Module_Controller', 'MyControllerExtension');
+Object::add_extension('Module_Controller', 'MyControllerExtension');
+{% endhighlight %}
 
 And in your template:
 
-	<h1>$Title</h1>
-	
-	$Content
-	
-	$MyUploadForm
+{% highlight html linenos %}
+<h1>$Title</h1>
+
+$Content
+
+$MyUploadForm
+{% endhighlight %}
 
 Remember, we can't overwrite the UploadForm method from the exsiting Module_Controller clas so we have to create a new method. That doesn't mean we can't take the original code and tweak it to our needs rather than copy/pasting the original method and modifying what we want to.
 
@@ -78,21 +77,21 @@ Remember, we can't overwrite the UploadForm method from the exsiting Module_Cont
 
 Just to clarify, the DBField classes are the ones like Enum, Varchar, HTMLText, etc that you declare in the $db property of your Pages and DataObjects. Early in my days with SilverStripe, I wanted to add methods to some of the DBField classes to use in my templates. That was about 2 years ago and now I know how to. One major method I wanted to add was the ability to obfuscate email addresses for Varchar fields on my Pages/DataObjects that stored email addresses. I even created and submitted a subclass of Varchar for the purpose of storing Emails and had special methods for processing email addresses in special ways. It got rejected. *sad face* So today I am happy to present to you the way to add obfuscation to Varchar for emails and a building block for extending DBFields.
 
-	class VarcharExtension extends Extension {
+{% highlight php linenos startinline %}
+class VarcharExtension extends Extension {
+    public function ObfuscateEmail() {
+        return Email::obfuscate($this->owner->value, 'hex');
+    }
+}
 
-	    public function ObfuscateEmail() {
-
-	        return Email::obfuscate($this->owner->value, 'hex');
-
-	    }
-
-	}
-
-	Object::add_extension('Varchar', 'VarcharExtension');
+Object::add_extension('Varchar', 'VarcharExtension');
+{% endhighlight %}
 
 And in your template:
 
-	$Email.ObfuscateEmail
+{% highlight html linenos %}
+$Email.ObfuscateEmail
+{% endhighlight %}
 
 The template code will output an obfuscated email address using the Email class's built-in functionality.
 
@@ -100,33 +99,27 @@ The template code will output an obfuscated email address using the Email class'
 
 GD is what allows us to prevent site maintainers and visitors from uploading images that break our layout. It's extremely powerful, but very simply written. The major functionality it gives us is proportional resizing, padded resizing, and cropping. So what if you want to add the ability to apply watermarks? I've seen people subclass GD and I'm not quite sure how they make the whole system use the GD subclass. Now, I can't really give an example here because, I'm not great with image editing in code using raw PHP functions and I haven't tested this theory to be absolutely sure, but in theory, you could create something like this:
 
-	class Watermark extends Extension {
+{% highlight php linenos startinline %}
+class Watermark extends Extension {
+    public function addWatermark() {
+        $gd = $this->owner->gd;
+        // Run code to apply the watermark
+        return $newGD;
+    }
+}
 
-	    public function addWatermark() {
-
-	        $gd = $this->owner->gd;
-
-	        // Run code to apply the watermark
-
-	        return $newGD;
-
-	    }
-
-	}
-
-	Object::add_extension('GD', 'Watermark');
+Object::add_extension('GD', 'Watermark');
+{% endhighlight %}
 
 And in your Image subclass:
 
-	class WatermarkedImage extends Image {
-
-	    public function generateWatermarkedImage($gd) {
-
-	        return $gd->addWatermark();
-
-	    }
-
-	}
+{% highlight php linenos startinline %}
+class WatermarkedImage extends Image {
+    public function generateWatermarkedImage($gd) {
+        return $gd->addWatermark();
+    }
+}
+{% endhighlight %}
 
 ... and then refer to it in your template.
 

@@ -1,0 +1,53 @@
+.post-meta {
+    @include font-size-rems(14px);
+    @include highlight-box;
+
+    a {
+//        color: $fg-pri-color;
+    }
+
+    *:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    time,
+    .taxonomy,
+    .permalink {
+        @include meta-list;
+    }
+
+    .taxonomy {
+        &:before {
+            content: '//';
+        }
+    }
+
+    .permalink {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.taxonomy {
+    list-style: none;
+    @include inline-list;
+
+    li {
+        &:after {
+            content: ',';
+        }
+
+        &:last-child {
+            &:after {
+                content: none;
+            }
+        }
+    }
+}
+
+.blog-entry {
+    .title {
+        @include font-size-rems(24px);
+    }
+}
