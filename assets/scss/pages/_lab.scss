@@ -1,40 +1,31 @@
 .lab-feed {
-    text-align: justify;
-    font-size: 0.1px;
+//  text-align: justify;
+//  font-size: 0.1px;
 
-    > header {
-        margin-bottom: 18px;
-    }
+//  > header {
+//    margin-bottom: 18px;
+//  }
 
-    &:after {
-        content: '';
-        display: inline-block;
-        width: 100%;
-    }
+//  &:after {
+//    content: '';
+//    display: inline-block;
+//    width: 100%;
+//  }
 }
 
 .lab-entry {
-    @include font-size-rems(18px);
-    margin-bottom: 1em;
-    @include highlight-box;
+  font-size: ems(18px);
+  margin-top: 1em;
 
-    .title {
-        @include font-size-rems(18px);
-        margin-top: 0;
-        margin-bottom: 0.5em;
-    }
+  .title {
+    font-size: ems(18px);
+    margin-bottom: .5em;
+    margin-top: 0;
+  }
 
-    header + p {
-        margin-top: 0;
-    }
-    
-    footer {
-        ul {
-            @include reset-mp;
-        }
-        
-        li {
-            @include meta-list;
-        }
-    }
+  header + p {
+    margin-top: 0;
+  }
 }
+
+// .lab-meta {}

@@ -1,0 +1,29 @@
+@function rem($target-px) {
+  $rem-size: $target-px / $base-font-size;
+
+  @return #{$rem-size}rem;
+}
+
+@function em($target-px, $context-px: $base-font-size) {
+  $em-size: $target-px / $context-px;
+
+  @return #{$em-size}em;
+}
+
+// @function proportion($target-value, $context-value) {
+//   @return $target-value / $context-value;
+// }
+//
+// @function add-unit($value, $unit: px) {
+//   @return #{$value}#{$unit}
+// }
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function remify($value) {
+  $raw-value: strip-unit($value);
+  $raw-base-value: strip-unit($base-font-size);
+  @return ($raw-value + px) (($raw-value / $raw-base-value) + rem);
+}

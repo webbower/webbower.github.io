@@ -1,0 +1,42 @@
+//// LISTS
+
+// Inline List
+.inline-list {
+  @include reset-list;
+
+  > li {
+    margin: 0 0 0 2px;
+    display: inline-block;
+    line-height: 1.0;
+  }
+}
+
+// Tag List
+.tag-list {
+  @include reset-list;
+
+  > li {
+    margin-right: 0;
+    padding-right: 0;
+    display: inline-block;
+    line-height: inherit;
+
+    &:after {
+      content: ',';
+    }
+
+    &:last-child:after {
+      content: none;
+    }
+
+    > a {
+      font-weight: normal;
+    }
+  }
+
+  &.meta-item {
+    li {
+      font-size: 1em;
+    }
+  }
+}

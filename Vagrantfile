@@ -31,7 +31,7 @@ Vagrant.configure('2') do |config|
     exit
   end
 
-  config.vm.box = "chef/ubuntu-14.04"
+  config.vm.box = "bento/ubuntu-14.04"
   
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -55,8 +55,10 @@ Vagrant.configure('2') do |config|
 
   config.vm.provision :chef_solo do |chef| 
     chef.json = {
-      'site' => {
-        'web_root' => '/vagrant/www'
+      'app' => {
+        'php' => {
+          'packages' => %w{ php5-mcrypt }
+        }
       }
     }
 

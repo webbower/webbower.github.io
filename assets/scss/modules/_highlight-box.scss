@@ -1,0 +1,25 @@
+//// HIGHLIGHT BOX
+
+.highlight-box {
+  background: white;
+  padding: 15px 20px;
+  margin: 1em 0;
+
+  // Remove top/bottom margin when .highlight-box is first/last child
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Rely on .highlight-box padding as spacing for first and last children inside
+  > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  > *:last-child {
+    margin-bottom: 0 !important;
+  }
+}

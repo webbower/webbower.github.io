@@ -1,3 +1,5 @@
-* {
-	@include box-sizing(border-box);
+@include border-box-all-the-things;
+
+img {
+  max-width: 100%;
 }

@@ -3,7 +3,8 @@ layout: post
 title: "The Great CMS Roundup"
 date: 2010-11-13 16:09
 comments: false
-categories: [SilverStripe, PHP, CMS]
+tags: [SilverStripe, PHP, CMS]
+intro: My rundown of CMS's I've used (Drupal, Joomla, WordPress, and ExpressionEngine) and why my path has led me to SilverStripe. Extensibility baked in from the ground up, consistent object oriented design patterns, thoughtful MVC and ORM implementations, and excellent separation of concerns for designer, developer, and maintainer just to name a few.
 ---
 
 Everyone's done it and now it's my turn. Since I started working on the web professionally in late-2004, I've hand my hands on Drupal, Joomla, WordPress, ExpressionEngine, and SilverStripe. I've cried and lauded aspects of each one and I'm here today to give my objective comparison of all 5. So, without further ado, let's begin.

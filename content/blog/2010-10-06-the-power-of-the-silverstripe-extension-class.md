@@ -3,7 +3,8 @@ layout: post
 title: "The Power of the SilverStripe Extension Class"
 date: 2010-10-06 18:25
 comments: false
-categories: [SilverStripe, PHP, Design Patterns]
+tags: [SilverStripe, PHP, Design Patterns]
+intro: Extend nearly any core class in SilverStripe using the Extension class: add a special route handler to a module controller; add an email obfuscation output to string-based DBFields; add a watermarking output method to the core Image class. The possibilities are endless.
 ---
 
 SilverStripe has some amazing ways to add functionality to the core code without hacking it. The way they have intelligently set up the class inheritance is fantastic. [MVC](http://en.wikipedia.org/wiki/Model–view–controller "Model/View/Controller") is pretty standard these days and shines in SilverStripe. And it also supports the the [Decorator pattern](http://en.wikipedia.org/wiki/Decorator_pattern).
@@ -49,7 +50,7 @@ Not happy with a template method on one of the Controller classes in a module? S
 
 Let's say we have a Module_Controller class that came with a module and it has an UploadForm method that outputs a form into our template, but there's something about it we don't like, maybe an extra field we don't want to show.
 
-{% highlight php linenos startinline %}
+```php
 class MyControllerExtension extends Extension {
     public function MyUploadForm() {
         $form = $this->owner->UploadForm();
@@ -59,17 +60,17 @@ class MyControllerExtension extends Extension {
 }
 
 Object::add_extension('Module_Controller', 'MyControllerExtension');
-{% endhighlight %}
+```
 
 And in your template:
 
-{% highlight html linenos %}
+```php
 <h1>$Title</h1>
 
 $Content
 
 $MyUploadForm
-{% endhighlight %}
+```
 
 Remember, we can't overwrite the UploadForm method from the exsiting Module_Controller clas so we have to create a new method. That doesn't mean we can't take the original code and tweak it to our needs rather than copy/pasting the original method and modifying what we want to.
 
@@ -77,7 +78,7 @@ Remember, we can't overwrite the UploadForm method from the exsiting Module_Cont
 
 Just to clarify, the DBField classes are the ones like Enum, Varchar, HTMLText, etc that you declare in the $db property of your Pages and DataObjects. Early in my days with SilverStripe, I wanted to add methods to some of the DBField classes to use in my templates. That was about 2 years ago and now I know how to. One major method I wanted to add was the ability to obfuscate email addresses for Varchar fields on my Pages/DataObjects that stored email addresses. I even created and submitted a subclass of Varchar for the purpose of storing Emails and had special methods for processing email addresses in special ways. It got rejected. *sad face* So today I am happy to present to you the way to add obfuscation to Varchar for emails and a building block for extending DBFields.
 
-{% highlight php linenos startinline %}
+```php
 class VarcharExtension extends Extension {
     public function ObfuscateEmail() {
         return Email::obfuscate($this->owner->value, 'hex');
@@ -85,13 +86,13 @@ class VarcharExtension extends Extension {
 }
 
 Object::add_extension('Varchar', 'VarcharExtension');
-{% endhighlight %}
+```
 
 And in your template:
 
-{% highlight html linenos %}
+```php
 $Email.ObfuscateEmail
-{% endhighlight %}
+```
 
 The template code will output an obfuscated email address using the Email class's built-in functionality.
 
@@ -99,7 +100,7 @@ The template code will output an obfuscated email address using the Email class'
 
 GD is what allows us to prevent site maintainers and visitors from uploading images that break our layout. It's extremely powerful, but very simply written. The major functionality it gives us is proportional resizing, padded resizing, and cropping. So what if you want to add the ability to apply watermarks? I've seen people subclass GD and I'm not quite sure how they make the whole system use the GD subclass. Now, I can't really give an example here because, I'm not great with image editing in code using raw PHP functions and I haven't tested this theory to be absolutely sure, but in theory, you could create something like this:
 
-{% highlight php linenos startinline %}
+```php
 class Watermark extends Extension {
     public function addWatermark() {
         $gd = $this->owner->gd;
@@ -109,17 +110,17 @@ class Watermark extends Extension {
 }
 
 Object::add_extension('GD', 'Watermark');
-{% endhighlight %}
+```
 
 And in your Image subclass:
 
-{% highlight php linenos startinline %}
+```php
 class WatermarkedImage extends Image {
     public function generateWatermarkedImage($gd) {
         return $gd->addWatermark();
     }
 }
-{% endhighlight %}
+```
 
 ... and then refer to it in your template.
 

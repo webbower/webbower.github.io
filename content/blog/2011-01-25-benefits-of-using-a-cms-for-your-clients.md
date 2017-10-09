@@ -3,7 +3,8 @@ layout: post
 title: "The Benefits of Using a CMS for Your Clients"
 date: 2011-01-25 20:50
 comments: false
-categories: [SilverStripe]
+tags: [SilverStripe]
+intro: A CMS can greatly simplify maintaining a website, primarily by abstracting away the technical underpinnings of the web. This is fantastic for the non-tech-savvy people who have to maintain a website and the login/navigate/edit experience has become fairly ubiquitous on the web. Since this has become familiar, it's much easier to teach than muddling with FTP and remote filesystems as well.
 ---
 
 As a Web Developer (or Web Professional in general), it is my job to give my clients the best recommendation for how to build their site. The two main choices are:
@@ -24,6 +25,6 @@ But the point of this post is to discuss option the second. Feel free to cite an
 * CMS's are built on top of a lot of pre-written code. This means that there's a powerful toolset available to reduce time, and cost, for adding features to the website.
 * With a CMS, you can enter bits of content once, like products in a store or job postings, and use them anywhere on your website or other websites. If you edit any of the original bit of content, like the description of a product or the title of a job posting, anywhere that content is being referenced will automatically update to reflect the change. Edit once, update everywhere. For example, if there's a store on the website and it showcases select products on various pages, rather than manually entering the product details on those pages, you select which products to show and if any product details changed, all the instances of the showcased products would automatically update.
 
-[SilverStripe](http://www.silverstripe.org/) is my CMS of choice. I've [used many others](http://www.webbower.com/blog/the-great-cms-roundup/) but I find SilverStripe is great for websites small and large. Installing it is takes me 10 minutes and it's very portable between server environments. Adding and editing pages is so intuitive and it's so simple to create a couple custom page types that require an image or manage a collection of child page entries. And the framework it's built on is so powerful and easily extendable. One prominent member of the SilverStripe community developed a small (joke, I think) web app in under an hour with it (Uncle Cheese for those who know of him).
+[SilverStripe](http://www.silverstripe.org/) is my CMS of choice. I've [used many others](/blog/the-great-cms-roundup) but I find SilverStripe is great for websites small and large. Installing it is takes me 10 minutes and it's very portable between server environments. Adding and editing pages is so intuitive and it's so simple to create a couple custom page types that require an image or manage a collection of child page entries. And the framework it's built on is so powerful and easily extendable. One prominent member of the SilverStripe community developed a small (joke, I think) web app in under an hour with it (Uncle Cheese for those who know of him).
 
 There are more technical reasons why SilverStripe is my CMS of choice, but this was meant for more laymen, non-tech-savvy types. So help me, I'll never build a static HTML website for a client ever again.

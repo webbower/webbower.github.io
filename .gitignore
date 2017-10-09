@@ -1,1 +1,8 @@
 _site
+/vendor/
+bower_components
+logs
+html/css
+www/css
+Notes.md
+_env.php

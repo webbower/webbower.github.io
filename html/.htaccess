@@ -1,0 +1,38 @@
+Redirect 301 /blog/benefits-of-using-a-cms-for-your-clients/ /blog/2011/01/25/benefits-of-using-a-cms-for-your-clients
+Redirect 301 /blog/the-great-cms-roundup/ /blog/2010/11/13/the-great-cms-roundup
+Redirect 301 /blog/the-power-of-the-silverstripe-extension-class/ /blog/2010/10/06/the-power-of-the-silverstripe-extension-class
+Redirect 410 /contact
+Redirect 410 /contact/
+Redirect 410 /portfolio
+Redirect 410 /portfolio/
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)|(\.php)$
+RewriteCond %{REQUEST_URI} !(\.gif)|(\.jpg)|(\.png)|(\.css)|(\.js)$
+# Allow webdav to continue working
+RewriteCond %{REQUEST_URI} !(webdav|resume)
+
+# Only work on www.webbower.com to allow for dynamic subdomains
+# RewriteCond %{HTTP_HOST} ^(www\.)|^(webbower\.com)$|(\.dev)$
+# RewriteCond %{REQUEST_URI} "^(/css|/js|/img)"
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
+
+# Only work on www.webbower.com to allow for dynamic subdomains
+RewriteCond %{HTTP_HOST} ^(www\.)|^(webbower\.com)$|(\.dev)$
+RewriteCond %{REQUEST_URI} ^(.*)$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# RewriteCond %{REQUEST_URI} "^(/css|/js|/img)"
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
+
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^ index.php [QSA,L]

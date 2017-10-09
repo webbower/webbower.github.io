@@ -1,79 +1,56 @@
 // Mixins
 
-@function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+////////// GENERAL MIXINS
+@mixin border-box-all-the-things {
+  html {
+    box-sizing: border-box;
+  }
+
+  * {
+    &,
+    &:before,
+    &:after {
+      box-sizing: inherit;
+    }
+  }
 }
 
-@function remify($value) {
-	$raw-value: strip-unit($value);
-	$raw-base-value: strip-unit($base-font-size);
-	@return ($raw-value + px) (($raw-value / $raw-base-value) + rem);
-}
-
-@mixin edge-padding($h, $v: false) {
-	@if $v {
-		padding: $v $h;
-	}
-	@else {
-		padding: $h;
-	}
+@mixin button-base {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @content;
 }
 
 @mixin reset-mp {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-@mixin inline-list {
-  &,
-  li {
-    @include reset-mp;
-  }
-
-  li,
-  a {
-    display: inline-block;
-  }
-}
-
-@mixin highlight-box {
-  background: white;
-  padding: 20px 25px;
-  padding: 15px 20px;
-}
-
-@mixin meta-list {
-  line-height: 1.71429;
-  display: block;
-
-  &:before {
-    content: '//\A0';
-    color: $accent-color;
-  }
+@mixin reset-list {
+  @include reset-mp;
+  list-style: none;
 }
 
 @mixin inline-meta-list {
   display: inline-block;
-  @include margin-right-rems(5px);
+  margin-right: ems(5px);
   line-height: 1.25;
 }
 
-@mixin rem-property($value, $property: font-size) {
-	$values: remify($value);
-	$property: unquote($property);
-	#{$property}: nth($values, 1);
-	#{$property}: nth($values, 2);
-}
-
-@mixin font-size-rems($size) {
-	@include rem-property($size, font-size);
-}
-
-@mixin margin-right-rems($size) {
-	@include rem-property($size, margin-right);
-}
-
-@mixin margin-top-bottom-rems($size) {
-    @include rem-property($size, margin-top);
-    @include rem-property($size, margin-bottom);
-}
+// @mixin rem-property($value, $property: font-size) {
+//   $values: remify($value);
+//   $property: unquote($property);
+//   #{$property}: nth($values, 1);
+//   #{$property}: nth($values, 2);
+// }
