@@ -1,17 +1,9 @@
-<footer class="meta post-meta">
-	<time itemprop="dateCreated" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date |  date: "%B %-d, %Y" }}</time>
-
-	<ul class="taxonomy">
-		{% for cat in include.post.categories %}
-			<li><a href="/tags/{{ cat }}">
-			{% if site.allcapstag contains cat %}
-			{{ cat | upcase }}
-			{% else %}
-			{{ cat | capitalize }}
-			{% endif %}
-			</a></li>
-		{% endfor %}
-	</ul>
-
-	<p class="permalink"><a href="{{ include.post.url }}">Permalink</a></p>
+<footer class="meta highlight-box">
+  <ul class="post-meta">
+    <li class="meta-item"><time itemprop="dateCreated" datetime="<?= $post->dateRfc3339 ?>" pubdate><?= $post->dateHuman ?></time></li>
+    <li class="meta-item">
+      <?php $this->insert('modules/tag-list', ['tags' => $post->tagPairs]) ?>
+    </li>
+    <li class="meta-item"><a href="<?= $post->url ?>">Permalink</a></li>
+  </ul>
 </footer>

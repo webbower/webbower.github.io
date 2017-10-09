@@ -1,29 +1,52 @@
+// Regular links are bold and accent color
+// Visited internal links inherit the parent color
+// Visited external links stay as accent color
+// Hover, active, and focus links are underlined
+
 a {
-	&:link,
-	&:visited {
-		color: $accent-color;
-		text-decoration: none;
-	}
-	
-//	.no-touch & {
-		&:hover,
-		&:focus {
-			text-decoration: underline;
-		}
-//	}
+  color: $accent-color;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:visited {
+    color: $accent-color;
+  }
+
+  .no-touch & {
+    &:hover,
+    &:focus {
+//      color: $accent-color;
+      text-decoration: underline;
+    }
+  }
+
+  .touch & {
+    &:active {
+//      color: $accent-color;
+      text-decoration: underline;
+    }
+  }
 }
 
-h1, h2, h3, h4, h5, h6, legend, dt {
-	a {
-		&:link,
-		&:visited {
-			color: inherit;
-		}
-	}
+h1, h2, h3 {
+  a:link,
+  a:visited {
+    color: currentColor;
+  }
 }
 
-// p, li, dd, table {
-// 	a {
-// 		
-// 	}
-// }
+p, li, dd, blockquote {
+  a[href^='http']:visited {
+    color: $accent-color;
+  }
+}
+
+//h1, h2, h3, h4, h5, h6, legend, dt {
+//h1, h2, h3 {
+//  a {
+//    &:link,
+//    &:visited {
+//      color: inherit;
+//    }
+//  }
+//}
