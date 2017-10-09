@@ -1,0 +1,10 @@
+.blog-entry {
+  .title {
+    font-size: ems(24px);
+  }
+}
+
+.post-meta {
+  @include reset-mp;
+  list-style: none;
+}

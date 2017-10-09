@@ -1,0 +1,18 @@
+//// STYLEGUIDE OVERRIDES
+
+.section-heading code {
+  text-transform: none;
+}
+
+.sg-heading {}
+
+.sg-note {
+  font-size: 12px;
+  font-style: italic;
+
+  &:before {
+    content: 'Note: ';
+    font-weight: bold;
+    font-style: normal;
+  }
+}

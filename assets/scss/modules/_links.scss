@@ -1,0 +1,29 @@
+a {
+	&:link,
+	&:visited {
+		color: $accent-color;
+		text-decoration: none;
+	}
+	
+//	.no-touch & {
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+//	}
+}
+
+h1, h2, h3, h4, h5, h6, legend, dt {
+	a {
+		&:link,
+		&:visited {
+			color: inherit;
+		}
+	}
+}
+
+// p, li, dd, table {
+// 	a {
+// 		
+// 	}
+// }

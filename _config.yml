@@ -1,0 +1,19 @@
+name: Webbower
+tagline: Where healthy DOM trees are cultivated
+markdown: redcarpet
+pygments: true
+permalink: /blog/:title
+exclude: [Gemfile, Gemfile.lock, .gitignore, bower.json, README.md]
+# safe: true
+lsi: false
+
+# Google Analytics
+ga-id: UA-18539289-1
+
+# Social usernames
+social:
+  twitter: webbower
+  github: webbower
+
+# Misc
+allcapstag: [php, cms, html, css, js, mysql]

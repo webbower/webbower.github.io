@@ -1,0 +1,52 @@
+.blog-heading {
+  display: flex;
+
+  * {
+    line-height: 18px;;
+  }
+
+  .breadcrumb {
+    line-height: 1.0;
+    margin: 0;
+
+    &:before {
+      content: '/';
+      margin: 0 0.5em;
+    }
+
+    .close {
+      font-size: 18px;
+      color: $fg-pri-color;
+      line-height: 1.0;
+      margin-left: 0.25em;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .rss-link {
+    font-size: 12px;
+  }
+}
+
+.blog-entry {
+  + .blog-entry {
+    margin-top: 2em;
+  }
+
+  > header {
+    > .title {
+      margin-top: 0;
+    }
+  }
+}
+
+//@media only screen and (min-width: 640px) {
+//  .blog-entry {
+//    + .blog-entry {
+//      margin-top: 3em;
+//    }
+//  }
+//}

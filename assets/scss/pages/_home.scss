@@ -1,0 +1,33 @@
+.home {
+    [role="main"] {
+        > section {
+            margin-bottom: 60px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+
+            > header {
+                border-bottom: 1px solid #DEDEDA;
+
+                > .title {
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    padding-left: 55px;
+                    position: relative;
+                    
+                    &:before {
+                        content: '';
+                        display: block;
+                        width: 40px;
+                        height: 1px;
+                        background: $accent-color;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

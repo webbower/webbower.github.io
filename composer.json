@@ -1,0 +1,42 @@
+{
+    "name": "webbower/webbower.com",
+    "description": "Webbower.com website",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/webbower/simple-data.git"
+        }
+    ],
+    "require": {
+        "slim/slim": "^2.6",
+        "league/plates": "^3.1",
+        "league/flysystem": "^1.0",
+        "symfony/yaml": "^2.6",
+        "league/commonmark": "^0.8.0",
+        "mnapoli/front-yaml": "^1.5",
+        "webbower/simple-model": "0.1.0"
+    },
+    "authors": [
+        {
+            "name": "Matt Bower",
+            "email": "matt@webbower.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Webbower\\": "app/"
+        },
+        "files": [
+          "app/utilities.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webbower\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "laravel/homestead": "^6.2"
+    }
+}

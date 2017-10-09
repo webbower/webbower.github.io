@@ -1,0 +1,50 @@
+---
+layout: default
+title: Welcome
+body:
+  class: home
+---
+<!-- Blog Summaries -->
+<section class="feed blog-feed">
+	<header>
+		<h2 class="title">Blog</h2>
+	</header>
+	
+	{% for post in site.posts %}
+	<article class="entry blog-entry">
+		<header>
+			<h2 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+		</header>
+
+		{{ post.excerpt }}
+
+		{% include post-meta.html post=post %}
+
+	</article>
+	{% endfor %}
+</section>
+
+<!-- Project Listings (Lab) -->
+<section class="feed lab-feed">
+	<header>
+		<h2 class="title">Lab</h2>
+	</header>
+	
+	{% for project in site.data.lab %}
+	<article class="entry lab-entry">
+		<header>
+			<h2 class="title"><a href="/lab/{{ project.id }}">{{ project.name }}</a></h2>
+		</header>
+		
+		<p>{{ project.desc }}</p>
+		
+		<footer>
+			<ul>
+				<li><span class="label visuallyhidden">Current version:</span> {{ project.version }}</li>
+				<li><a href="/lab/{{ project.id }}">Docs</a></li>
+				<li><a href="http://github.com/{{ site.social.github }}/{{ project.id }}">Source</a></li>
+			</ul>
+		</footer>
+	</article>
+	{% endfor %}
+</section>
